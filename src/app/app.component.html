@@ -1,0 +1,75 @@
+<!------------------------- Navigation Bar Component ------------------------------------->
+<app-nav-bar ></app-nav-bar>
+<br>
+<br>
+<br>
+<!----------------------------------- CONTACTS LIST -------------------------------------->
+<div style=" margin: 20px; ">
+  <h3>CARS</h3>
+</div>
+
+<hr>
+
+<ul class="cars" style=" margin: 20px;" >
+<!-- adding some CSS class conditionally to the element being selected -->
+<li *ngFor="let car of cars"
+    [class.selected] = "car === selectedCar"
+    (click)="onSelect(car)" >
+    <span class="badge">{{car.id}}</span> {{car.model}}
+</li>
+</ul>
+
+<div class="row">
+<div class="col-xs-12" style=" margin: 20px;" >
+  <form>
+<!---------------------------- New car input info section ----------------------------->
+
+   <div class="row">
+      <div class="col-sm-2 form-group">
+        <label for="name">ID:</label>
+        <input
+          type="text"
+          id="ID"
+          readonly
+          value="ID set by Admin"
+          class="form-control"
+          #idInput>
+      </div>
+      <div class="col-sm-2 form-group">
+        <label for="name">Make:</label>
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          #makeInput>
+      </div>
+      <div class="col-sm-2 form-group">
+        <label for="email">Model:</label>
+        <input
+          type="text"
+          id="email"
+          class="form-control"
+          #modelInput>
+      </div>
+      <div class="col-sm-2 form-group">
+        <label for="email">URL:</label>
+        <input
+          type="text"
+          id="url"
+          class="form-control"
+          #urlInput>
+      </div>
+    </div>
+<!------------------------ event listens for click to create new contact ------------------->
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn btn-primary" type="submit" (click)="onAddCar(idInput,makeInput,modelInput,urlInput)">Create</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+<!----------------------------- Contact(s) Card Component -------------------------------------->
+<hr>
+<app-car-data [car]="selectedCar" (updateisComplete)="updateCarInfo()"></app-car-data>
+

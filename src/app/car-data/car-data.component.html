@@ -1,0 +1,38 @@
+<!-------------------- Contacts Card -------------------------------->
+<!------------- shows info and can modify info ---------------------->
+<div *ngIf="car" style=" margin: 20px;" >
+
+    <h4><span class="nEP">{{car.model}} DETAILS</span></h4>
+    <br>
+    <div> <span class='nEP'>ID:</span> {{car.id}} <span class='nEP'>Make:</span> {{car.make}} <span class='nEP'>Model:</span>{{car.model}}</div>
+    <br>
+    <form>
+      <div>
+        <label style="margin: 10px;">Car ID: </label>
+        <input [(ngModel)]="car.id" readonly placeholder="id" name="id" #carId>
+      </div>
+      <div>
+        <label style="margin: 10px;">Car make: </label>
+        <input [(ngModel)]="car.make" placeholder="make" name="make" #carMake>
+      </div>
+      <div>
+        <label style="margin: 10px;" >Car model: </label>
+        <input [(ngModel)]="car.model" placeholder="model" name="model" #carModel>
+      </div>
+      <div>
+        <label style="margin: 10px;" >Car url: </label>
+        <input [(ngModel)]="car.url" placeholder="url" name="url" #carURL>
+      </div>
+    </form>    
+    <div>
+      <img [src]="car.url" alt="car" width="600" height="350">
+    </div>
+    <br>
+    <div>
+      <button class="btn btn-danger" style="margin: 10px;" type="button" (click)="onDeleteCar(carId)">Delete</button>
+      <button class="btn btn-success" type="button" style="margin: 10px; " (click)="onUpdateCar(carId, carMake, carModel, carURL)">Save</button>
+      <button class="btn btn-warning" style="margin: 10px;" type="button" (click)="onCancelCar()">Cancel</button>
+    </div>
+
+  
+  </div>
