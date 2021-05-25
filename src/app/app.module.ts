@@ -8,17 +8,22 @@ import { CarsService } from './cars.service';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CarDataComponent,
-    NavBarComponent
+    NavBarComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    [HttpClientModule]
+    [HttpClientModule],
+    RouterModule.forRoot([ {path:'**', component: PageNotFoundComponent} ])
   ],
   providers: [CarsService],
   bootstrap: [AppComponent]
